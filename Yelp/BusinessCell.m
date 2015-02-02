@@ -61,6 +61,7 @@
     self.nameLabel.preferredMaxLayoutWidth = self.nameLabel.frame.size.width;
     
     
+    
 }
 
 

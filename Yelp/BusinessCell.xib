@@ -27,39 +27,39 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.07 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7e-ax-onh">
-                        <rect key="frame" x="307" y="8" width="35" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aq-dW-JS2">
-                        <rect key="frame" x="330" y="32" width="12" height="12"/>
+                        <rect key="frame" x="330" y="30" width="12" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1610 santa clara st" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ky-cn-4vM">
-                        <rect key="frame" x="86" y="51" width="89.5" height="12"/>
+                        <rect key="frame" x="86" y="47.5" width="89.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500 reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-Pm-95s">
-                        <rect key="frame" x="179" y="32" width="56" height="12"/>
+                        <rect key="frame" x="179" y="28.5" width="56" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai, Seafood, Salad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqt-Hr-K7c">
+                        <rect key="frame" x="86" y="64.5" width="97.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xXP-bP-aAB">
-                        <rect key="frame" x="86" y="29" width="84" height="17"/>
+                        <rect key="frame" x="86" y="25.5" width="84" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="84" id="82C-40-mod"/>
                             <constraint firstAttribute="height" constant="17" id="mkE-0V-A7o"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai, Seafood, Salad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqt-Hr-K7c">
-                        <rect key="frame" x="86" y="68" width="97.5" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.07 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7e-ax-onh">
+                        <rect key="frame" x="307" y="8" width="35" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                     <constraint firstItem="dqt-Hr-K7c" firstAttribute="leading" secondItem="zgF-bF-SA5" secondAttribute="trailing" constant="8" id="dml-8m-XZn"/>
                     <constraint firstItem="zgF-bF-SA5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eGH-HR-xXI"/>
                     <constraint firstAttribute="trailing" secondItem="j7e-ax-onh" secondAttribute="trailing" constant="10" id="elu-bY-BvJ"/>
-                    <constraint firstItem="1aq-dW-JS2" firstAttribute="top" secondItem="j7e-ax-onh" secondAttribute="bottom" constant="12" id="jFa-OH-rq8"/>
+                    <constraint firstItem="1aq-dW-JS2" firstAttribute="top" secondItem="j7e-ax-onh" secondAttribute="bottom" constant="10" id="jFa-OH-rq8"/>
                     <constraint firstItem="zgF-bF-SA5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="kEc-pk-D5T"/>
                     <constraint firstAttribute="trailing" secondItem="1aq-dW-JS2" secondAttribute="trailing" constant="10" id="kiT-OT-1vZ"/>
                     <constraint firstItem="SQt-Py-E7y" firstAttribute="leading" secondItem="zgF-bF-SA5" secondAttribute="trailing" constant="8" id="l3s-Yz-JoJ"/>
@@ -83,7 +83,7 @@
                     <constraint firstItem="SQt-Py-E7y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="oeM-Ak-RM0"/>
                     <constraint firstItem="4ky-cn-4vM" firstAttribute="top" secondItem="xXP-bP-aAB" secondAttribute="bottom" constant="5" id="qlL-Qh-zPV"/>
                     <constraint firstItem="j7e-ax-onh" firstAttribute="leading" secondItem="SQt-Py-E7y" secondAttribute="trailing" constant="8" id="rc2-jd-rwW"/>
-                    <constraint firstItem="xXP-bP-aAB" firstAttribute="top" secondItem="SQt-Py-E7y" secondAttribute="bottom" constant="6.5" id="xyL-x2-rjB"/>
+                    <constraint firstItem="xXP-bP-aAB" firstAttribute="top" secondItem="SQt-Py-E7y" secondAttribute="bottom" constant="3" id="xyL-x2-rjB"/>
                     <constraint firstItem="4ky-cn-4vM" firstAttribute="leading" secondItem="zgF-bF-SA5" secondAttribute="trailing" constant="8" id="zsq-XL-spi"/>
                 </constraints>
             </tableViewCellContentView>
