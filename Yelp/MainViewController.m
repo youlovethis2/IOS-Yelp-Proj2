@@ -25,6 +25,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) BusinessCell *prototypeCell;
 
+- (void)fetchBusinessWithQuery: (NSString *)query params: (NSDictionary *)params;
 @end
 
 @implementation MainViewController
@@ -35,17 +36,10 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
+        [self fetchBusinessWithQuery:@"Restaurants" params:nil];
         
-        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-            NSLog(@"response: %@", response);
-            NSArray *businessDictionaries = response[@"businesses"];
-            self.businesses = [Business businessWithDictionaries:businessDictionaries];
-            [self.tableView reloadData];
-            
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error: %@", [error description]);
-        }];
+      
+        
     }
     return self;
 }
@@ -109,7 +103,9 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 
 - (void)filtersViewController:(FiltersViewController *)filtersViewController didChangeFilters:(NSDictionary *)filters{
-    NSLog(@"fire new network event ");
+    [self fetchBusinessWithQuery:@"Restaurant" params:filters];
+    NSLog(@"fire new network event %@", filters);
+    
 }
 
 - (BusinessCell *)prototypeCell
@@ -128,7 +124,16 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     return UITableViewAutomaticDimension;
 }
 
-
+- (void) fetchBusinessWithQuery:(NSString *)query params:(NSDictionary *)params{
+    [self.client searchWithTerm:query params:params success:^(AFHTTPRequestOperation *operation, id response){
+       
+        NSArray *businessDictionaries = response[@"businesses"];
+        self.businesses = [Business businessWithDictionaries:businessDictionaries];
+        [self.tableView reloadData];
+    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        NSLog(@"error: %@",[error description]);
+    }];
+}
 
 
 #pragma mark - Private methods
