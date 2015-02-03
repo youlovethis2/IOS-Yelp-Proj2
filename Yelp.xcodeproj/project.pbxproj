@@ -29,7 +29,6 @@
 		58EADA121A7F2953004EEC47 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58EADA101A7F2953004EEC47 /* FiltersViewController.xib */; };
 		58EADA161A7F40B2004EEC47 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EADA141A7F40B2004EEC47 /* SwitchCell.m */; };
 		58EADA171A7F40B2004EEC47 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58EADA151A7F40B2004EEC47 /* SwitchCell.xib */; };
-		58EADA1A1A807402004EEC47 /* YelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EADA191A807402004EEC47 /* YelpManager.m */; };
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -76,8 +75,6 @@
 		58EADA131A7F40B2004EEC47 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
 		58EADA141A7F40B2004EEC47 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
 		58EADA151A7F40B2004EEC47 /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
-		58EADA181A8073F8004EEC47 /* YelpManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YelpManager.h; path = "../../codepath-yelp-master/Yelp/YelpManager.h"; sourceTree = "<group>"; };
-		58EADA191A807402004EEC47 /* YelpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YelpManager.m; path = "../../codepath-yelp-master/Yelp/YelpManager.m"; sourceTree = "<group>"; };
 		771882FD430846BCF9C5EE8D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		92E48786EBECB6CCCACD74CE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9DEC6D18C14F46F8AF2EA320 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,8 +117,6 @@
 		420474F318DC297600E88E07 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				58EADA191A807402004EEC47 /* YelpManager.m */,
-				58EADA181A8073F8004EEC47 /* YelpManager.h */,
 				420474F418DC299500E88E07 /* YelpClient.h */,
 				420474F518DC299500E88E07 /* YelpClient.m */,
 			);
@@ -378,7 +373,6 @@
 				58EADA071A7EDF3B004EEC47 /* Business.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
-				58EADA1A1A807402004EEC47 /* YelpManager.m in Sources */,
 				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
 				58EADA0C1A7EF0C4004EEC47 /* BusinessCell.m in Sources */,

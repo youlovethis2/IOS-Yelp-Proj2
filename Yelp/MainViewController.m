@@ -11,7 +11,7 @@
 #import "Business.h"
 #import "BusinessCell.h"
 #import "FiltersViewController.h"
-#import "YelpManager.h"
+
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
 NSString * const kYelpConsumerSecret = @"33QCvh5bIF5jIHR5klQr7RtBDhQ";
@@ -75,9 +75,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-        [[YelpManager sharedManager] setCurrentSearchTerm:searchText];
-}
+
 
 - (void)dealloc
 {
