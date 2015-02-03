@@ -7,6 +7,7 @@
 //
 
 #import "FiltersViewController.h"
+#import "YelpClient.h"
 
 
 
@@ -14,10 +15,23 @@
 @interface FiltersViewController ()
 
 @property (nonatomic,readonly) NSDictionary *filters;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong) NSArray *categories;
+
+- (void) initCategories;
 
 @end
 
 @implementation FiltersViewController
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        [self initCategories];
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,6 +71,10 @@
     [self.delegate filtersViewController:self didChangeFilters:self.filters];
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    
+}
+
+- (void) initCategories{
     
 }
 

@@ -49,7 +49,7 @@
     [self.thumbImageView setImageWithURL:[NSURL URLWithString:self.business.imageUrl]];
      self.nameLabel.text = self.business.name;
     [self.ratingImageView setImageWithURL:[NSURL URLWithString:self.business.ratingImageUrl]];
-    self.ratingLabel.text = [NSString stringWithFormat:@"%ld Reviews",self.business.numReviews];
+    self.ratingLabel.text = [NSString stringWithFormat:@"%ld Reviews",(long)self.business.numReviews];
     self.addressLabel.text = self.business.address;
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f mi",self.business.distance];
     self.categoryLabel.text = self.business.categories;
@@ -58,7 +58,9 @@
 
 - (void) layoutSubviews{
     [super layoutSubviews];
-    self.nameLabel.preferredMaxLayoutWidth = self.nameLabel.frame.size.width;
+    [self.contentView layoutIfNeeded];
+    self.nameLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.nameLabel.frame);
+   
     
     
     
