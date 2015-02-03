@@ -11,6 +11,8 @@
 #import "Business.h"
 #import "BusinessCell.h"
 #import "FiltersViewController.h"
+#import "ComplexFiltersViewController.h"
+
 
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
@@ -40,6 +42,10 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 @implementation MainViewController
 
+{
+    NSArray *businessDictionaries;
+ 
+}
 
 - (void)searchForText:(NSString *)searchText
 {
@@ -51,13 +57,14 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
                         success:^(AFHTTPRequestOperation *operation, id response) {
                            //h NSLog(@"response: %@", response);
                             
-                           
-                            NSArray *businessDictionaries = response[@"businesses"];
+                            businessDictionaries = response[@"businesses"];
                             self.businesses = [Business businessWithDictionaries:businessDictionaries];
-                            NSLog(@"%d",self.businesses.count);
-                            if(self.businesses.count>0){
-                                [self.tableView reloadData];
+                            [self.tableView reloadData];
+                            if (businessDictionaries.count > 0) {
+                                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                                      atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                             }
+    
                             
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -106,7 +113,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
  
     [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
     self.title = @"Yelp";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(onFilterButton)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(didFilterTapped)];
     
     
     
@@ -146,7 +153,9 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BusinessCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BusinessCell"];
+  
     cell.business = self.businesses[indexPath.row];
+    
     return cell;
 
 }
@@ -154,8 +163,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 - (void)filtersViewController:(FiltersViewController *)filtersViewController didChangeFilters:(NSDictionary *)filters{
     [self fetchBusinessWithQuery:@"Restaurant" params:filters];
-    NSLog(@"fire new network event %@", filters);
-    
+       
 }
 
 - (BusinessCell *)prototypeCell
@@ -189,12 +197,15 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 #pragma mark - Private methods
 
 - (void)onFilterButton {
+    
     FiltersViewController *vc = [[FiltersViewController alloc] init];
     vc.delegate = self;
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nvc animated:YES completion:nil];
     
 }
+
+
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
@@ -209,7 +220,29 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 }
 
 
+- (void)didFilterTapped
+{
+    
+    ComplexFiltersViewController *vc = [[ComplexFiltersViewController alloc] init];
+    vc.delegate = self;
+    
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [nvc.navigationBar setBarTintColor:[UIColor purpleColor]];
+    [nvc.navigationBar setTintColor:[UIColor whiteColor]];
+    [nvc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    
+    [self.navigationController presentViewController:nvc animated:YES completion:nil];
+}
 
+-(void)searchForCategory:(NSString *)category sort:(NSString *)sort distance:(NSString *)distance deal:(NSString *)deal
+{
+    _categoryFilterString = category;
+    _dealFilterString = deal;
+    _sortFilterString = sort;
+    _distanceFilterString = distance;
+    [self searchForText:@""];
+}
 
 
 
