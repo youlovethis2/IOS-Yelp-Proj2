@@ -15,4 +15,12 @@
 
 - (AFHTTPRequestOperation *)searchWithTerm:(NSString *)term params:(NSDictionary *)params success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (AFHTTPRequestOperation *)searchWithTerm:(NSString *)term
+                                  category:(NSString *)category
+                                  distance:(NSString *)distance
+                                      sort:(NSString *)sort
+                                      deal:(NSString *)deal
+                                   success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
 @end

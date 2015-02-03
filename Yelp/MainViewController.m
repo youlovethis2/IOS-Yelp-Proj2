@@ -23,12 +23,48 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, strong) NSArray *businesses;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) BusinessCell *prototypeCell;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
+
+
+@property (nonatomic, copy) NSString *categoryFilterString;
+@property (nonatomic, copy) NSString *dealFilterString;
+@property (nonatomic, copy) NSString *sortFilterString;
+@property (nonatomic, copy) NSString *distanceFilterString;
+
 
 - (void)fetchBusinessWithQuery: (NSString *)query params: (NSDictionary *)params;
 @end
 
 @implementation MainViewController
+
+
+- (void)searchForText:(NSString *)searchText
+{
+    [self.client searchWithTerm:searchText
+                       category:_categoryFilterString
+                       distance:_distanceFilterString
+                           sort:_sortFilterString
+                           deal:_dealFilterString
+                        success:^(AFHTTPRequestOperation *operation, id response) {
+                           //h NSLog(@"response: %@", response);
+                            
+                           
+                            NSArray *businessDictionaries = response[@"businesses"];
+                            self.businesses = [Business businessWithDictionaries:businessDictionaries];
+                            NSLog(@"%d",self.businesses.count);
+                            if(self.businesses.count>0){
+                                [self.tableView reloadData];
+                            }
+                            
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"error: %@", [error description]);
+                        }];
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,8 +72,24 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        [self fetchBusinessWithQuery:@"Restaurants" params:nil];
+        //[self fetchBusinessWithQuery:@"Restaurants" params:nil];
+         [self searchForText:@"Restaurants"];
+        UISearchBar *label = [[UISearchBar alloc] initWithFrame:CGRectMake(100,000, 200,30)];
         
+        
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
+        [self.searchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
+        [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        
+        self.searchBar.delegate = self;
+        
+        self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+        [self.searchController setDelegate:self];
+        [self.searchController setSearchResultsDataSource:self];
+        [self.searchController setSearchResultsDelegate:self];
+        
+        
+        self.navigationItem.titleView = self.searchController.searchBar;
       
         
     }
@@ -49,9 +101,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    searchBar.delegate = self;
-    self.navigationItem.titleView = searchBar;
+    
     
  
     [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
@@ -145,6 +195,20 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     [self presentViewController:nvc animated:YES completion:nil];
     
 }
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    NSLog(@"searchtext : %@", searchText);
+    [self searchForText:searchText];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
+
 
 
 
