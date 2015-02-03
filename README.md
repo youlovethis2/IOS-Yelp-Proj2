@@ -5,6 +5,8 @@ An app to search for restaurants and businesses nearby.
 
 Time spent: 12 hours
 
+![Video Walkthrough](yelp.gif)
+
 ### Required:
 #### Search Results Page
 * [x] Table rows should be dynamic height according to the content height
