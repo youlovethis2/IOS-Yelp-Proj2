@@ -236,7 +236,7 @@
     }
     
     
-    [view setBackgroundColor:[UIColor lightGrayColor]];
+    [view setBackgroundColor:[UIColor lightTextColor]];
     
     return view;
 }
